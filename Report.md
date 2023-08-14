@@ -3,8 +3,9 @@
 
 ## Learning Algorithm
 
+### Experiment 1
 
-### Baseline Model
+#### Baseline Model
 
 **Actor Model:**
 
@@ -29,7 +30,7 @@ During the initial training, the following hyperparameters were used:
 - WEIGHT_DECAY = 0.0001   
 
 
-### Experimental Model v1
+#### Experimental Model v1
 
 
 **Actor Model:**
@@ -56,7 +57,7 @@ During the initial training, the following hyperparameters were used:
 - WEIGHT_DECAY = 0.0001  
 
 
-### Experimental Model v2
+#### Experimental Model v2
 
 
 **Actor Model:**
@@ -86,7 +87,7 @@ During the initial training, the following hyperparameters were used:
 - WEIGHT_DECAY = 0.0001  
 
 
-### Experimental Model v3
+#### Experimental Model v3
 
 
 **Actor Model:**
@@ -116,8 +117,6 @@ During the initial training, the following hyperparameters were used:
 - WEIGHT_DECAY = 0.0001 
 
 
-
-
 #### Conclusion
 
 | Architecture | Average Training Time | Episodes | Average Score (Training) | Average Score (Inference) | Plot |
@@ -132,11 +131,7 @@ During the initial training, the following hyperparameters were used:
 - I have then tried the same `experiment_v2` model on GPU workspace to check the performance, but the workspace failed to run for some reason.
 
 
-
-
-## Results
-
-### Hyperparameters Tuning Results
+#### Hyperparameters Tuning Results
 
 - **Updated Hyperparameters:**
 
@@ -181,11 +176,60 @@ During the initial training, the following hyperparameters were used:
   - **Fail**
 
 
+### Experiment 2
+
+#### Experimental Model v4
+
+**Actor Model:**
+- Fully connected layer - Input: state_size (int), Output: 128
+- Fully connected layer - Input: 128, Output: 256
+- Fully connected layer - Input: 256, Output: action_size (int)
+- Batch Normalization layer added after the first hidden layer (fc1) with a momentum of 1.
+- Dropout with a probability of 0.20 applied after the second hidden layer (fc2).
+- Activation function: ReLU for all hidden layers, hyperbolic tangent (tanh) for the output layer.
+
+**Critic Model:**
+- Fully connected layer - Input: state_size (int), Output: 128
+- Fully connected layer - Input: 128 + action_size (int), Output: 256
+- Fully connected layer - Input: 256, Output: 1 (scalar Q-value)
+- Batch Normalization layer added after the first hidden layer (fc1) with a momentum of 1.
+- Dropout with a probability of 0.20 applied after the second hidden layer (fc2).
+- Activation function: ReLU for all hidden layers, linear (no activation) for the output layer.
+
+**Weight Initialization:**
+- Weight initialization for both models uses the Kaiming initialization (He initialization).
+- Bias values are initialized to 0.1.
+
+During the initial training, the following hyperparameters were used:
+
+- BUFFER_SIZE = int(1e6)  
+- BATCH_SIZE = 128        
+- GAMMA = 0.95            
+- TAU = 1e-3              
+- LR_ACTOR = 1e-4         
+- LR_CRITIC = 3e-3       
+- WEIGHT_DECAY = 0 
+
+
+#### Conclusion
+
+| Architecture | Average Training Time | Episodes | Average Score (Training) | Average Score (Inference) | Plot |
+|--------------|-----------------------|----------|------------------------|-------------------------|------|
+| Experimental v4 | 1201.58 | 195 | 1.01 | 2.67 | ![Plot](plots/experimental_v4.png) |
+
+
+## Results
+
+| Average Training Time | Episodes | Average Score (Training) | Average Score (Inference) | Plot |
+|-----------------------|----------|------------------------|-------------------------|------|
+| --- | 500 | 0.17 | 0.07 | ![Plot](plots/final.png) |
+
+
 By performing hyperparameter tuning and retraining the model, I successfully improved the agent's performance. The chosen hyperparameters for the above training session resulted in the fastest training time and achieved the highest average score at convergence.
 
 
 
-### Ideas for Future Work
+## Ideas for Future Work
 
 1. **Comparative Analysis of RL Algorithms:** Conduct a comprehensive comparative analysis of various reinforcement learning algorithms, including REINFORCE, TNPG, RWR, REPS, TRPO, CEM, CMA-ES, and DDPG, in continuous control tasks. Evaluate their performance in terms of convergence speed, sample efficiency, and stability. This analysis will provide insights into the strengths and weaknesses of different algorithms and help identify the most suitable approach for specific continuous control scenarios.
 

@@ -16,6 +16,13 @@ In this environment, you have a double-jointed arm that can move to target locat
 
 The observation space consists of 33 variables corresponding to position, rotation, velocity, and angular velocities of the arm. Each action is a vector with four numbers, corresponding to torque applicable to two joints. Every entry in the action vector should be a number between -1 and 1.
 
+In this project, you'll have two types of the Unity environment:
+
+1. One with a single agent.
+2. Another with 20 identical agents, each having their own environment copy.
+
+The second version is great for algorithms like PPO, A3C, and D4PG. These algorithms use multiple agent copies working in parallel to gather experience effectively.
+
 
 ## Getting Started
 

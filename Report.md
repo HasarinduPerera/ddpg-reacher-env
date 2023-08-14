@@ -1,4 +1,4 @@
-# Project Report for DQN Banana Environment Project
+# Project Report for Reacher Environment Project
 
 
 ## Learning Algorithm
@@ -222,7 +222,7 @@ During the initial training, the following hyperparameters were used:
 
 | Average Training Time | Episodes | Average Score (Training) | Average Score (Inference) | Plot |
 |-----------------------|----------|------------------------|-------------------------|------|
-| --- | 500 | 0.17 | 0.07 | ![Plot](plots/final.png) |
+| 6178.78 | 605 | 30.07 | 36.23 | ![Plot](plots/final.png) |
 
 
 By performing hyperparameter tuning and retraining the model, I successfully improved the agent's performance. The chosen hyperparameters for the above training session resulted in the fastest training time and achieved the highest average score at convergence.

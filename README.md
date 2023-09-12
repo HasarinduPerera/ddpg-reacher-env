@@ -4,7 +4,7 @@
 [image2]: https://user-images.githubusercontent.com/10624937/43851646-d899bf20-9b00-11e8-858c-29b5c2c94ccc.png "Crawler"
 
 
-# DRLND - Project 2: Continuous Control
+# DDPG: Reacher Environment (Unity)
 
 ### Project Details
 
@@ -39,13 +39,13 @@ To get started with this repository, follow the instructions below to install th
 1. Clone the repository to your local machine using the following command:
 
    ```
-   git clone https://github.com/HasarinduPerera/drlnd-continuous-control-project
+   git clone https://github.com/HasarinduPerera/ddpg-reacher-env
    ```
 
 2. Change into the project directory:
 
    ```
-   cd drlnd-continuous-control-project
+   cd ddpg-reacher-env
    ```
 
 3. Start the project without any additional work as the required environment, "Banana.app," is already uploaded in this project.
